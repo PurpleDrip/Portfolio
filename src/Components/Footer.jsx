@@ -14,29 +14,31 @@ const Footer = () => {
   const [toastDisplayed, setToastDisplayed] = useState(false); // New state to track toast
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".content",
-        start: "top 60%",
-      },
-    });
+    if (window.innerWidth > 800) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".content",
+          start: "top 60%",
+        },
+      });
 
-    const container = gsap.from(".content", {
-      autoAlpha: 0,
-      x: 200,
-      duration: 0.5,
-    });
-    const header = gsap.from(".footer-heading", {
-      autoAlpha: 0,
-      x: -200,
-      duration: 0.3,
-    });
-    const form = gsap.from(".client-form", {
-      autoAlpha: 0,
-      x: 200,
-      duration: 0.3,
-    });
-    tl.add(container, 0).add(header, 0.5).add(form, 0.5);
+      const container = gsap.from(".content", {
+        autoAlpha: 0,
+        x: 200,
+        duration: 0.5,
+      });
+      const header = gsap.from(".footer-heading", {
+        autoAlpha: 0,
+        x: -200,
+        duration: 0.3,
+      });
+      const form = gsap.from(".client-form", {
+        autoAlpha: 0,
+        x: 200,
+        duration: 0.3,
+      });
+      tl.add(container, 0).add(header, 0.5).add(form, 0.5);
+    }
   }, []);
 
   useEffect(() => {

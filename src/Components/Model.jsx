@@ -41,92 +41,101 @@ const Model = () => {
   };
 
   useEffect(() => {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-    camera.position.set(14, 0.8, -3);
+    if (window.innerWidth > 800) {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      camera.position.set(14, 0.8, -3);
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000, 0);
-
-    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
-    directionalLight.position.set(5, 10, 7.5);
-    scene.add(ambientLight);
-    scene.add(directionalLight);
-
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableZoom = false;
-    controls.enablePan = true;
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.25;
-
-    const container = document.getElementById("Container");
-    if (container) {
-      container.appendChild(renderer.domElement);
-    }
-
-    const loader = new GLTFLoader();
-    loader.load(
-      "model//minecraft_saturn.glb",
-      (gltf) => {
-        const dragon = gltf.scene;
-        const actualModel =
-          dragon.children.length > 0 ? dragon.children[0] : dragon;
-
-        actualModel.position.set(-3, -1, -1);
-        actualModel.scale.set(3, 3, 3);
-
-        const rotationAngle1 = THREE.MathUtils.degToRad(210);
-        const rotationAngle2 = THREE.MathUtils.degToRad(120);
-        dragon.rotation.x = rotationAngle1;
-        dragon.rotation.z = -rotationAngle2;
-
-        scene.add(dragon);
-
-        const mixer = new THREE.AnimationMixer(dragon);
-
-        const animate = (time) => {
-          requestAnimationFrame(animate);
-          mixer.update(0.016);
-          dragon.rotation.y += 0.0003;
-          controls.update();
-          renderer.render(scene, camera);
-        };
-        animate();
-      },
-      (xhr) => {
-        console.log("Model " + (xhr.loaded / xhr.total) * 100 + "% loaded");
-      },
-      (error) => {
-        console.error("An error happened:", error);
-      }
-    );
-
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
+      const renderer = new THREE.WebGLRenderer({ alpha: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
-    };
+      renderer.setClearColor(0x000000, 0);
 
-    window.addEventListener("resize", handleResize);
+      const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
+      directionalLight.position.set(5, 10, 7.5);
+      scene.add(ambientLight);
+      scene.add(directionalLight);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      renderer.dispose();
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableZoom = false;
+      controls.enablePan = true;
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.25;
+
+      const container = document.getElementById("Container");
       if (container) {
-        container.removeChild(renderer.domElement);
+        container.appendChild(renderer.domElement);
       }
-    };
+
+      const loader = new GLTFLoader();
+      loader.load(
+        "model//minecraft_saturn.glb",
+        (gltf) => {
+          const dragon = gltf.scene;
+          const actualModel =
+            dragon.children.length > 0 ? dragon.children[0] : dragon;
+
+          actualModel.position.set(-3, -1, -1);
+          actualModel.scale.set(3, 3, 3);
+
+          const rotationAngle1 = THREE.MathUtils.degToRad(210);
+          const rotationAngle2 = THREE.MathUtils.degToRad(120);
+          dragon.rotation.x = rotationAngle1;
+          dragon.rotation.z = -rotationAngle2;
+
+          scene.add(dragon);
+
+          const mixer = new THREE.AnimationMixer(dragon);
+
+          const animate = (time) => {
+            requestAnimationFrame(animate);
+            mixer.update(0.016);
+            dragon.rotation.y += 0.0003;
+            controls.update();
+            renderer.render(scene, camera);
+          };
+          animate();
+        },
+        (xhr) => {
+          console.log("Model " + (xhr.loaded / xhr.total) * 100 + "% loaded");
+        },
+        (error) => {
+          console.error("An error happened:", error);
+        }
+      );
+
+      const handleResize = () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+        renderer.dispose();
+        if (container) {
+          container.removeChild(renderer.domElement);
+        }
+      };
+    }
   }, []);
 
   return (
     <>
+      {window.innerWidth < 800 ? (
+        <div className="h-6 w-screen bg-white flex items-center justify-center text-black ">
+          <code>View on desktop for the best experience!</code>
+        </div>
+      ) : (
+        ""
+      )}
       <div
         id="Container"
         className="min-h-screen relative w-full pl-[15rem] z-0 hide"
