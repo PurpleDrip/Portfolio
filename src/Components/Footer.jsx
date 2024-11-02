@@ -121,7 +121,7 @@ const Footer = () => {
         </div>
         <video
           src="/videos/robot-dance.mp4"
-          className="absolute top-0 -left-[10rem] -z-10 p-8"
+          className="absolute top-0 -left-[10rem] -z-10 p-8 hide"
           autoPlay
           muted
           loop

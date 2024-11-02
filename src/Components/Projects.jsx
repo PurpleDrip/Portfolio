@@ -18,11 +18,11 @@ const Projects = () => {
         <code className="tracking-[20px]">Projects</code>
       </h1>
       <div className="first-project h-screen p-16 pl-48">
-        <div className="container h-full rounded-3xl p-16 relative bg-[--primary]">
+        <div className="container h-full rounded-3xl p-16 relative bg-[--primary] ">
           <h1 className="text-3xl text-yellow-200 ">
             <code className="tracking-[15px]">1CARD</code>
           </h1>
-          <div className="img-cont h-[30rem] w-[50rem] absolute right-10">
+          <div className="img-cont h-[30rem] max-w-[50rem] absolute right-10">
             <Swiper
               spaceBetween={30}
               centeredSlides={true}
@@ -117,11 +117,13 @@ const Projects = () => {
             easy to navigate and cast their votes without confusion.
             <br />
             <br />
-            The platform is built with accessibility in mind, featuring
-            responsive design elements that adapt to various devices, whether on
-            a desktop, tablet, or smartphone. This flexibility allows users to
-            vote anytime and anywhere, accommodating their busy lifestyles.
-            <br />
+            <hide>
+              The platform is built with accessibility in mind, featuring
+              responsive design elements that adapt to various devices, whether
+              on a desktop, tablet, or smartphone. This flexibility allows users
+              to vote anytime and anywhere, accommodating their busy lifestyles.
+              <br />
+            </hide>
           </p>
           <div className="link absolute bottom-16 h-8">
             <a href="https://github.com/PurpleDrip/Voting-Hub" target="_blank">

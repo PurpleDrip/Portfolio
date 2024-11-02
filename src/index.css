@@ -154,3 +154,83 @@ a.default-link {
   background-color: yellow !important;
   opacity: 1;
 }
+
+@media (max-width: 800px) {
+  .hide {
+    display: none;
+  }
+  .intro-box {
+    background-color: rgba(175, 170, 170, 0.336);
+    left: 1rem;
+    top: 10rem;
+    width: 80%;
+  }
+  .intro-box h1 {
+    font-size: 2rem;
+  }
+  .intro-box h2 {
+    font-size: 1rem;
+  }
+  .intro-box p {
+    font-size: 1rem;
+  }
+  #Container {
+    padding-left: 1rem;
+    margin-top: 0;
+  }
+  #skills {
+    margin-top: 5rem;
+  }
+  #projects h1 {
+    margin-top: 0;
+  }
+  #projects h1 > code {
+    font-size: 3rem;
+    letter-spacing: 0;
+  }
+  .first-project {
+    padding-inline: 1rem;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .img-cont {
+    width: 150%;
+    position: static;
+    margin: 0;
+    padding: 0;
+    height: 13rem;
+    margin-top: 1rem;
+  }
+  .container p {
+    font-size: 0.8rem;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: 0.7rem;
+  }
+  #mail h1 {
+    font-size: 1.7rem;
+    text-align: center;
+    white-space: wrap;
+  }
+  .content {
+    width: 100%;
+  }
+  .client-form {
+    align-items: center;
+  }
+  .client-form input,
+  .client-form textarea {
+    width: 80%;
+  }
+}
+
+@media (max-width: 400px) {
+  hide {
+    display: none;
+  }
+}
