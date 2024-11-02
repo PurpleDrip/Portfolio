@@ -11,7 +11,7 @@ const Footer = () => {
   const [state, handleSubmit] = useForm("mjkvgrdp");
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
-  const [toastDisplayed, setToastDisplayed] = useState(false); // New state to track toast
+  const [toastDisplayed, setToastDisplayed] = useState(false);
 
   useEffect(() => {
     if (window.innerWidth > 800) {
@@ -42,26 +42,24 @@ const Footer = () => {
   }, []);
 
   useEffect(() => {
-    // Check if form submission succeeded
     if (state.succeeded && !toastDisplayed) {
       toast.success("Form submitted successfully!", {
         position: "top-center",
       });
-      setToastDisplayed(true); // Set the toast as displayed
+      setToastDisplayed(true);
       setEmail("");
       setText("");
     } else if (state.errors && state.errors.length > 0) {
       toast.error("Please fill all the fields correctly!", {
         position: "bottom-right",
       });
-      setToastDisplayed(false); // Reset the toast displayed for errors
+      setToastDisplayed(false);
     }
 
-    // Reset the displayed toast state when submission resets
     if (state.submitting) {
       setToastDisplayed(false);
     }
-  }, [state]); // Add state as a dependency
+  }, [state]);
 
   return (
     <div

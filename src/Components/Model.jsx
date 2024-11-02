@@ -130,7 +130,7 @@ const Model = () => {
   return (
     <>
       {window.innerWidth < 800 ? (
-        <div className="h-6 w-screen bg-white flex items-center justify-center text-black ">
+        <div className="h-6 w-screen bg-white flex items-center justify-center text-black text-sm">
           <code>View on desktop for the best experience!</code>
         </div>
       ) : (
