@@ -129,7 +129,7 @@ const Model = () => {
     <>
       <div
         id="Container"
-        className="min-h-screen relative w-full pl-[15rem] z-0"
+        className="min-h-screen relative w-full pl-[15rem] z-0 hide"
       ></div>
       <div className="title absolute top-10 right-1/2 translate-x-1/2 flex flex-col items-center">
         <h2 className="text-2xl">

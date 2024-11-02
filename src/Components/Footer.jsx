@@ -127,7 +127,7 @@ const Footer = () => {
           loop
         ></video>
       </div>
-      <a href="#" className="absolute w-16 -bottom-10 -right-[7rem]">
+      <a href="#" className="absolute w-16 -bottom-10 -right-[7rem] hide">
         <img src="/icons/up-arrow.png" alt="" />
       </a>
     </div>

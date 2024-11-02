@@ -66,9 +66,11 @@ const Projects = () => {
             platform universally for authentication or kyc.
             <br />
             <br />
-            Different sites use different identity cards to authenticate their
-            users. By using 1 CARD it becomes promising and very reliable for
-            mankind. <br />
+            <hide>
+              Different sites use different identity cards to authenticate their
+              users. By using 1 CARD it becomes promising and very reliable for
+              mankind. <br />
+            </hide>
           </p>
           <div className="link absolute bottom-20 h-8">
             <a href="https://github.com/PurpleDrip/1Card" target="_blank">
@@ -113,11 +115,11 @@ const Projects = () => {
             can participate in the voting process effortlessly.
             <br />
             <br />
-            The intuitive interface guides users through each step, making it
-            easy to navigate and cast their votes without confusion.
-            <br />
-            <br />
             <hide>
+              The intuitive interface guides users through each step, making it
+              easy to navigate and cast their votes without confusion.
+              <br />
+              <br />
               The platform is built with accessibility in mind, featuring
               responsive design elements that adapt to various devices, whether
               on a desktop, tablet, or smartphone. This flexibility allows users
