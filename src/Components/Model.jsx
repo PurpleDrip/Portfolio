@@ -131,7 +131,7 @@ const Model = () => {
     <>
       {window.innerWidth < 800 ? (
         <div className="h-6 w-screen bg-white flex items-center justify-center text-black text-sm">
-          <code>Visit on bigger screen for better view!</code>
+          <code>View on desktop for the best experience!</code>
         </div>
       ) : (
         ""
@@ -153,7 +153,7 @@ const Model = () => {
         />
       </div>
       <button
-        className="credits-btn bg-white p-2 absolute top-1/2 -right-9 -rotate-90 text-black rounded text-sm z-20 hide"
+        className="credits-btn bg-white p-2 absolute top-1/2 -right-9 -rotate-90 text-black rounded text-sm z-20"
         onClick={handleButtonClick}
       >
         <code>About Model</code>
